@@ -298,7 +298,7 @@ function save( ) {
   let password = params.get("password");
 
 // Make POST request 
-axios.post('http://localhost:5000/data', {
+axios.post('https://mernback-9dei.onrender.com/data', {
   username: username,
   password: password,
   threed:  JSON.stringify(scene.toJSON())
@@ -320,7 +320,7 @@ function load() {
      let password = params.get("password");
     
      // Make GET request
-     axios.get('http://localhost:5000/threed', {
+     axios.get('https://mernback-9dei.onrender.com/threed', {
       params: {
        username: username,
        password: password
