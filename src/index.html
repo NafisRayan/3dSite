@@ -1,9 +1,27 @@
+Abtahi Shipar
+
+Explain
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Objects Viewer</title>
+  <button id="instructionButton" onmouseover="showInstructions()" onmouseout="hideInstructions()">i</button>
+
+  <div id="instructionContainer">
+    <p>You can click on any object and move them around.</p>
+    <p>Use the scroll wheel to zoom in and out.</p>
+    <p>To resize the objects, click on them and use (1 to 9) keys.</p>
+    <p>Feel free to add objects with the top-left menu.</p>
+    <p>Use the Delete key to remove the selected object.</p>
+    <p>Use the Save button to save your progress.</p>
+    <p>Use the Load button to load the previous progress.</p>
+  </div>
+  
+
+
   <style>
     html, body {
       margin: 0;
@@ -37,6 +55,8 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+
+
 #loadButton {
   position: absolute;
   top: 50px; /* Move the "Load" button below the "Save" button */
@@ -51,27 +71,118 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+#instructionButton {
+  position: absolute;
+  top: 20px; /* Adjust the top position as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  width: 20px; /* Set the button as a perfect square */
+  height: 20px; /* Set the button as a perfect square */
+  border: none;
+  border-radius: 50%; /* Make the button circular */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  animation: spin 2s infinite linear; /* Add spin effect */
+  animation-timing-function: ease-in-out;
+}
 
-    button {
-      background-color: #af4c4c; /* Green color */
-      color: white;
-      padding: 10px 20px;
-      width: 100%; /* Set a fixed width for the buttons */
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: block; /* Set buttons to block level to arrange them vertically */
-      margin-bottom: 10px; /* Add some margin between buttons */
-    }
+#instructionButton:hover {
+  background-color: #45a049; /* Darker green color on hover */
+  transform: scale(1.1); /* Scale the button slightly on hover */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Add a subtle glow on hover */
+}
 
-    button:hover {
-      background-color: #45a049; /* Darker green color on hover */
-      transform: scale(1.05); /* Scale the button slightly on hover */
-    }
+@keyframes spin {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+#instructionContainer {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#instructionButton {
+  position: absolute;
+  top: 20px; /* Adjust the top position as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  width: 20px; /* Set the button as a perfect square */
+  height: 20px; /* Set the button as a perfect square */
+  border: 2px solid #45a049; /* Add a border */
+  border-radius: 50%; /* Make the button circular */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  animation: spin 2s infinite linear; /* Add spin effect */
+  animation-timing-function: ease-in-out;
+}
+
+#instructionButton:hover {
+  background-color: #45a049; /* Darker green color on hover */
+  transform: scale(1.1); /* Scale the button slightly on hover */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.4); /* Enhance glow on hover */
+}
+
+@keyframes spin {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+#instructionContainer {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Change font style */
+  transition: box-shadow 0.3s ease; /* Smoother box-shadow transition */
+}
+
+#instructionContainer p {
+  margin: 8px 0;
+}
+
+#instructionContainer:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 255, 0.8), 0 0 30px rgba(0, 0, 255, 0.4); /* Enhance glow on hover */
+}
   </style>
 </head>
 <body>
+  <script>
+    function showInstructions() {
+      document.getElementById('instructionContainer').style.display = 'block';
+    }
+  
+    function hideInstructions() {
+      document.getElementById('instructionContainer').style.display = 'none';
+    }
+  </script>
+  
   <div id="menu">
     <button onclick="newBox()">Add Box</button>
     <button onclick="newSphere()">Add Sphere</button>
